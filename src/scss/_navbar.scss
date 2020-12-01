@@ -1,0 +1,136 @@
+$navbarBreakpoint: 750px;
+
+
+.navbar{
+    background-color: $black;
+    height: $navbarHeight;
+    font-size: 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    box-shadow: inset 0px -1px 0px 0px rgba(0,0,0,0.2);
+}
+
+.navbar--wrapper{
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.navbar--logo{
+    display: block;
+    height: 100%;
+    float: left;
+    box-sizing: border-box;
+    padding: 8px;
+    font-size: 32px;
+    color: $green;
+    text-decoration: none;
+    font-family: Lobster;
+    cursor: pointer;
+
+    &:hover{
+        color: $greenLight;
+    }
+}
+
+.navbar--logo--image{
+    height: 100%;
+    display: block;
+}
+
+.navbar--menu{
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+.navbar--item--link{
+    color: $white;
+    text-decoration: none;
+    height: 100%;
+    display: block;
+    box-sizing: border-box;
+    padding: 20px;
+    &:hover{
+        color: $greenLight;
+    }
+}
+
+// Screen
+@media(min-width: $navbarBreakpoint + 1){
+    .navbar--toggle{
+        display: none;
+    }
+    .navbar--menu{
+        height: 100%;
+        float: right;
+        display: block;
+    }
+    .navbar--item{
+        display: inline-block;
+        height: 100%;
+    }    
+}
+
+// Mobile
+@media(max-width: $navbarBreakpoint){
+    .navbar--toggle{
+        cursor: pointer;
+        box-sizing: border-box;
+        height: 100%;
+        width: $navbarHeight;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        box-shadow: inset 1px 0px 0px 0px rgba(255,255,255,0.05), -1px 0px 0px 0px rgba(0,0,0,0.2);
+        background-color: transparent;
+        border: 0;
+        &::before{
+            content: "";
+            position: relative;
+            top: -4px;
+            display: inline-block;
+            width: 30px;
+            height: 3px;
+            background-color: $white;
+            box-shadow: 0px 10px 0px 0px $white, 0px -10px 0px 0px $white;
+        }
+
+        &:hover, &:active, &:focus{
+            &::before{
+                background-color: $greenLight;
+                box-shadow: 0px 10px 0px 0px $greenLight, 0px -10px 0px 0px $greenLight;
+            }   
+            outline: none;
+        }
+
+    }
+
+    .navbar--menu{
+        display: none;
+    }
+
+    .navbar.navbar--opened{
+        .navbar--menu{
+            padding: 0;
+            margin: 0;
+            list-style-type: none;
+            // This will fullscreen only
+            position: absolute;
+            top: 100%;
+            width: 100%;
+            display: block;
+            background-color: $black;
+            
+        }
+    }
+
+    .navbar--item{
+        display: block;
+        box-shadow: inset 0px 1px 0px 0px rgba(255,255,255,0.05), inset 0px -1px 0px 0px rgba(0,0,0,0.2);
+    }
+}
